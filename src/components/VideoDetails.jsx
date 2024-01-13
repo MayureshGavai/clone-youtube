@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
@@ -15,7 +15,7 @@ import {formatDistance, subDays} from 'date-fns'
 const VideoDetails = () => {
   const [video, setVideo] = useState();
   const [relatedVideos, setReleatedVideos] = useState();
-  const [channelDetail, setChannelDetail] = useState();
+  // const [channel, setChannel] = useState();
   const { id } = useParams();
   const { setLoading } = useContext(Context);
 
@@ -23,6 +23,7 @@ const VideoDetails = () => {
     document.getElementById("root").classList.add("custom-h");
     fetchVideoDetails();
     fetchRelatedVideos();
+    // fetchChanelDetails()
   }, [id]);
 
   const fetchVideoDetails = () => {
@@ -47,6 +48,16 @@ const VideoDetails = () => {
     });
   };
 
+  // const fetchChanelDetails = () => {
+  //   setLoading(true);
+  //   fetchChanelDetails(
+  //     `channels?part=snippet%2Cstatistics&id=${video?.snippet?.channelId}`
+  //   ).then(({ items }) => {
+  //     setChannel(items)
+  //     setLoading(false);
+  //   })
+  // }
+
   // const {snippet:{localized:{title}}  } = video
 
   return (
@@ -68,15 +79,21 @@ const VideoDetails = () => {
           </div>
           <div className="flex justify-between flex-col text-sm md:text-xl md:flex-row mt-4  items-start">
             <div className="flex items-center">
-              <div className="flex h-11 w-11 rounded-full overflow-hidden">
-                <img className="bg-white h-full w-full object-cover" src="" />
-              </div>
+              {/* <div className="flex h-11 w-11 rounded-full overflow-hidden">
+                <img className="bg-white h-full w-full object-cover" 
+                  src= {channel?.snippet?.thumbnails?.default?.url} 
+                />
+              </div> */}
               <div className="flex flex-col ml-3">
-                <div className="text-white text-md font-semibold flex items-center ">
-                  {video?.snippet?.channelTitle}
-                  <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1" />
+                <Link to={`/channel/${video?.snippet?.channelId}`}>
+                    <div className="text-white text-md font-semibold flex items-center hover:underline cursor-pointer">
+                      {video?.snippet?.channelTitle}
+                      <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1" />
+                    </div>
+                </Link>
+                <div className="text-white/[0.7] text-sm">
+                  {/* {channel?.statistics?.subscriberCount}  subscribers */}
                 </div>
-                <div className="text-white/[0.7] text-sm">subscribers</div>
               </div>
               <button className="px-4 py-2 ml-6 rounded-full font-medium bg-black text-white dark:bg-white dark:text-black">
                 Subscribe

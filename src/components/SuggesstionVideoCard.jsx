@@ -26,10 +26,10 @@ const SuggesstionVideoCard = ({video}) => {
                       <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] ml-1'/>
                     </span>
                     <div className="flex text-[12px] lg:text-[10px] xl:text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
-                        <span>Views</span>
+                        {/* <span>Views</span>
                         <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
                             .
-                        </span>
+                        </span> */}
                         <span className="truncate">
                           {formatDistance(subDays(video?.snippet?.publishTime, 3), new Date(), { addSuffix: true})}
                         </span>

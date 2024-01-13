@@ -30,11 +30,11 @@ const VideoCard = ({video}) => {
                 src={video?.snippet?.thumbnails?.high?.url} alt="" />
         </div>
         <div className="flex mt-3">
-            <div className="flex items-start">
+            {/* <div className="flex items-start">
                 <div className="flex h-9 w-9 rounded-full overflow-hidden">
                     <img className='h-full w-full object-cover bg-white' src='' alt="" />
                 </div>
-            </div>
+            </div> */}
             <div className="flex flex-col ml-3 overflow-hidden dark:text-white">
                 <span className='text-sm font-medium line-clamp-2'>
                     {video?.snippet?.title}
@@ -44,10 +44,10 @@ const VideoCard = ({video}) => {
                     <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] ml-1'/>
                 </span>
                 <div className="flex text-[12px] text-white/[0.7] truncate overflow-hidden">
-                    <span>Views</span>
+                    {/* <span>Views</span>
                     <span className='lassName="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1'>
                         .
-                    </span>
+                    </span> */}
                     <span className='truncate'>
                        {formatDistance(subDays(video?.snippet?.publishTime, 3), new Date(), { addSuffix: true})}
                     </span>

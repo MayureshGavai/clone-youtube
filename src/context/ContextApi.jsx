@@ -16,7 +16,7 @@ export const ContextProvider = ({children}) => {
  
     const fetchDataByCategory = async (query) => {
         setLoading(true)
-        fetchData(`search?part=snippet,id&q=${query}`).then(({items})=>{
+        fetchData(`search?part=snippet,id&q=${query}&maxResults=50`).then(({items})=>{
             console.log(items)
             setSearchResult(items)
             setLoading(false)

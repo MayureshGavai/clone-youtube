@@ -4,7 +4,6 @@ import { Context } from '../context/ContextApi'
 import { fetchData } from '../utils/api'
 import LeftNav from './LeftNav'
 import SearchResultVideoCard from './SearchResultVideoCard'
-import SuggesstionVideoCard from './SuggesstionVideoCard'
 
 const SearchResult = () => {
 
@@ -19,7 +18,7 @@ const SearchResult = () => {
 
   const fetchResult = () => {
     setLoading(true)
-    fetchData(`search?q=${searchQuery}`).then(res=>{
+    fetchData(`search?q=${searchQuery}&maxResults=10`).then(res=>{
       setResults(res.items)
       console.log(results)
     })
@@ -37,7 +36,7 @@ const SearchResult = () => {
                 return (
                   <SearchResultVideoCard
                    key={idx}
-                   videoId = {result?.id?.videoId}
+                   resultId = {result?.id?.videoId}
                   />
                  
                 )
