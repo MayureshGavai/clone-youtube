@@ -18,7 +18,7 @@ export const ContextProvider = ({children}) => {
         setLoading(true)
         fetchData(`search?part=snippet,id&q=${query}&maxResults=50`).then(({items})=>{
             console.log(items)
-            setSearchResult(items)
+            setSearchResult([...items])
             setLoading(false)
         })
     }

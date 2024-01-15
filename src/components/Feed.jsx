@@ -8,6 +8,10 @@ const Feed = () => {
   const {loading, searchResult} = useContext(Context)
 
   useEffect(()=>{
+    console.log({searchResult});
+  },[searchResult])
+
+  useEffect(()=>{
     document.getElementById('root').classList.remove('custom-h')
   },[])
 

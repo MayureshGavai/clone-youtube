@@ -9,7 +9,7 @@ const SearchResult = () => {
 
   const [results, setResults] = useState()
   const {searchQuery} = useParams()
-  const {setLoading} = useContext(Context)
+  const {loading, setLoading} = useContext(Context)
 
   useEffect(()=>{
     document.getElementById("root").classList.remove("custom-h");
@@ -31,7 +31,7 @@ const SearchResult = () => {
       <div className='grow w-[calc(100%-240px)] h-full overflow-y-auto bg-black'>
           <div className='grid grid-cols-1 gap-2 p-5'>
             {
-              results?.map((result,idx)=>{
+              results && results?.map((result,idx)=>{
                 if(result?.id?.kind !== "youtube#video") return false
                 return (
                   <SearchResultVideoCard
