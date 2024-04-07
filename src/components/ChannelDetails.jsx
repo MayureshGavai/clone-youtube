@@ -57,12 +57,14 @@ const ChannelDetails = () => {
               />
             </div>
             <div className="flex mt-4">
-              <div className="h-[50px] w-[50px] md:h-[60px] lg:h-[75px] xl:h-[75px]">
-                <img className="h-full w-full object-cover rounded-full " 
-                  src={channel?.snippet?.thumbnails?.high?.url} 
-                  alt="" />
-              </div>
-              <div className="flex flex-col ml-5">
+            <div className="w-1/12">
+            <div className="h-[50px] w-[50px] md:h-[60px] md:w-[60px] lg:h-[75px] lg:w-[75px] rounded-full overflow-hidden">
+  <img className="h-full w-full object-cover" 
+    src={channel?.snippet?.thumbnails?.high?.url} 
+    alt="" />
+</div>
+            </div>
+              <div className="w-11/12 flex flex-col ml-5">
                 <span className="flex items-center text-2xl">
                   {channel?.snippet?.title}
                   <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] ml-1'/>
